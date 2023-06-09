@@ -20,28 +20,44 @@ function changeColor(e){
   e.target.style.background = 'black';
 }
 
-function refreshPage(){
-  window.location.reload();
+function clearGrid(){
+  container.innerHTML = ''
+  genSquareGrid(size)
+  const cells = document.querySelectorAll('.cell')
+
+  cells.forEach((cell)=>
+  {
+    cell.addEventListener('mouseover', function(e){
+      changeColor(e);
+    });
+  })
 }
 
+function changeSize(){
+  let newSize = prompt("Enter Grid Size: ");
+  console.log(newSize);
+  if (newSize != null){
+    size = parseInt(newSize)
+  }
+  
+  clearGrid();
+}
+
+// Default size
 var size = 20;
 
 const container = document.querySelector('.grid-container');
 
-const clear = document.querySelector('#clear')
+// Clear Button Event
+const clear = document.querySelector('#clear');
+clear.addEventListener('click', clearGrid)
 
-clear.addEventListener('click', refreshPage)
-var size = 20;
-genSquareGrid(size);
+const changeGridSize = document.querySelector("#size");
+changeGridSize.addEventListener('click', changeSize)
 
-const cells = document.querySelectorAll('.cell')
+// Starts Grid
+clearGrid();
 
-cells.forEach((cell)=>
-{
-  cell.addEventListener('mouseover', function(e){
-    changeColor(e);
-  });
-})
 
 
 
