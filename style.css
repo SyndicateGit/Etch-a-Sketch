@@ -6,9 +6,6 @@ body{
 }
 .cell{
   background-color: white;
-  border: 1px;
-  border-color: black;
-  border-style: solid;
   flex-grow: 1;
 }
 
